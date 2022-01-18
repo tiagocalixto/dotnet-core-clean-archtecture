@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MyLittlePetShop.Entity\MyLittlePetShop.Entity.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="handler\" />
+    <Folder Include="owner\" />
+    <Folder Include="owner\find\" />
+    <Folder Include="owner\delete\" />
+    <Folder Include="owner\persist\" />
+    <Folder Include="owner\delete\interfaces\" />
+    <Folder Include="owner\find\interfaces\" />
+    <Folder Include="owner\persist\interfaces\" />
+    <Folder Include="handler\interfaces\" />
+  </ItemGroup>
+</Project>

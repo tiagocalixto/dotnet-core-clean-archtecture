@@ -1,0 +1,159 @@
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+
+namespace MyLittlePetShop.DataProvider.Migrations
+{
+    public partial class InitialMigration3 : Migration
+    {
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropForeignKey(
+                name: "FK_contact_owner_owner_id",
+                table: "contact");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_contact_owner_OwnerDbOwnerId",
+                table: "contact");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_pet_owner_owner_id",
+                table: "pet");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_pet_owner_OwnerDbOwnerId",
+                table: "pet");
+
+            migrationBuilder.DropIndex(
+                name: "IX_pet_OwnerDbOwnerId",
+                table: "pet");
+
+            migrationBuilder.DropIndex(
+                name: "IX_contact_OwnerDbOwnerId",
+                table: "contact");
+
+            migrationBuilder.DropColumn(
+                name: "OwnerDbOwnerId",
+                table: "pet");
+
+            migrationBuilder.DropColumn(
+                name: "OwnerDbOwnerId",
+                table: "contact");
+
+            migrationBuilder.AlterColumn<int>(
+                name: "owner_id",
+                table: "pet",
+                type: "integer",
+                nullable: false,
+                defaultValue: 0,
+                oldClrType: typeof(int),
+                oldType: "integer",
+                oldNullable: true);
+
+            migrationBuilder.AlterColumn<int>(
+                name: "owner_id",
+                table: "contact",
+                type: "integer",
+                nullable: false,
+                defaultValue: 0,
+                oldClrType: typeof(int),
+                oldType: "integer",
+                oldNullable: true);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_contact_owner_owner_id",
+                table: "contact",
+                column: "owner_id",
+                principalTable: "owner",
+                principalColumn: "id",
+                onDelete: ReferentialAction.Cascade);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_pet_owner_owner_id",
+                table: "pet",
+                column: "owner_id",
+                principalTable: "owner",
+                principalColumn: "id",
+                onDelete: ReferentialAction.Cascade);
+        }
+
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropForeignKey(
+                name: "FK_contact_owner_owner_id",
+                table: "contact");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_pet_owner_owner_id",
+                table: "pet");
+
+            migrationBuilder.AlterColumn<int>(
+                name: "owner_id",
+                table: "pet",
+                type: "integer",
+                nullable: true,
+                oldClrType: typeof(int),
+                oldType: "integer");
+
+            migrationBuilder.AddColumn<int>(
+                name: "OwnerDbOwnerId",
+                table: "pet",
+                type: "integer",
+                nullable: true);
+
+            migrationBuilder.AlterColumn<int>(
+                name: "owner_id",
+                table: "contact",
+                type: "integer",
+                nullable: true,
+                oldClrType: typeof(int),
+                oldType: "integer");
+
+            migrationBuilder.AddColumn<int>(
+                name: "OwnerDbOwnerId",
+                table: "contact",
+                type: "integer",
+                nullable: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_pet_OwnerDbOwnerId",
+                table: "pet",
+                column: "OwnerDbOwnerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_contact_OwnerDbOwnerId",
+                table: "contact",
+                column: "OwnerDbOwnerId");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_contact_owner_owner_id",
+                table: "contact",
+                column: "owner_id",
+                principalTable: "owner",
+                principalColumn: "id",
+                onDelete: ReferentialAction.Restrict);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_contact_owner_OwnerDbOwnerId",
+                table: "contact",
+                column: "OwnerDbOwnerId",
+                principalTable: "owner",
+                principalColumn: "id",
+                onDelete: ReferentialAction.Restrict);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_pet_owner_owner_id",
+                table: "pet",
+                column: "owner_id",
+                principalTable: "owner",
+                principalColumn: "id",
+                onDelete: ReferentialAction.Restrict);
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_pet_owner_OwnerDbOwnerId",
+                table: "pet",
+                column: "OwnerDbOwnerId",
+                principalTable: "owner",
+                principalColumn: "id",
+                onDelete: ReferentialAction.Restrict);
+        }
+    }
+}
